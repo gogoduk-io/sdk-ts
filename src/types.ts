@@ -203,16 +203,32 @@ export type AdminBoundary = {
    * exterior rings). For `format=wkt`, it's a string.
    */
   boundary: number[][] | number[][][] | string;
+  /** Parent province name. For provinces (admin_level=4) this equals `name`. */
+  province_name?: string;
+  /** Source identifier of the parent province record. */
+  province_id?: string;
+  /** Total population recorded for this boundary. */
+  population?: number;
+  /** Area in square kilometres. */
+  area_km2?: number;
+  /**
+   * Notes on the most recent administrative reorganisation (Vietnam
+   * boundaries merge/split over time). Free-form Vietnamese text.
+   */
+  pre_merge_info?: string;
+  /** Official seat of administration (city/town name). */
+  admin_center?: string;
+  /** Public contact phone number for the local administration. */
+  phone?: string;
+  /** Official website URL for the local administration. */
+  website?: string;
+  /** `[longitude, latitude]` centroid for cheap labelling. */
+  centroid?: [number, number];
 };
 
 /**
  * Map keyed by `admin_level_<N>` (e.g. `admin_level_4`, `admin_level_8`)
  * to a list of boundaries at that level.
- *
- * NOTE: response is intentionally a flat name + polygon today. Future
- * versions of the API will surface additional fields (province_name,
- * population, area_km2, pre_merge_info). When that lands, the SDK will
- * bump to v0.2.0 with backwards-compatible optional fields.
  */
 export type AdminBoundariesResponse = {
   [adminLevelKey: string]: AdminBoundary[];
