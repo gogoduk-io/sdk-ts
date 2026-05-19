@@ -1,0 +1,76 @@
+{
+  "name": "@gogoduk/sdk",
+  "version": "0.1.0",
+  "description": "Official TypeScript SDK for the GoGoDuk Map API — geocoding, reverse geocoding, autocomplete, and admin boundaries for Vietnam and SEA.",
+  "keywords": [
+    "gogoduk",
+    "map",
+    "geocoding",
+    "reverse-geocoding",
+    "autocomplete",
+    "vietnam",
+    "southeast-asia",
+    "sdk",
+    "typescript"
+  ],
+  "author": "GoGoDuk <hi@gogoduk.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/gogoduk-io/sdk-ts#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gogoduk-io/sdk-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gogoduk-io/sdk-ts/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\" \"tests/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,json,md}\" \"tests/**/*.{ts,tsx}\"",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
